@@ -49,7 +49,7 @@ while ($row = mysqli_fetch_assoc($sql_contact)) {
 					  <?php  } else{  ?>
 
 
-					  <img src="img/<?php echo $person['contact_profile']  ?>" alt="<?php echo $person['contact_fname']  ?>"  width="40%" style="float:left;">
+					  <img src="img/<?php echo $person['contact_profile']  ?>" alt="<?php echo $person['contact_fname ']  ?>"  width="40%" style="float:left;">
 
 					  <?php  }   ?>
 
@@ -59,7 +59,7 @@ while ($row = mysqli_fetch_assoc($sql_contact)) {
 						<p><b>Cell Phone:</b> <?php echo $person['contact_cphone'] ?> </p>
 						<p><b>Home Phone:</b> <?php echo $person['contact_hphone'] ?> </p>
 						<p><b>Work Phone:</b><?php echo $person['contact_wphone'] ?> </p>
-						<p><b>Address:</b> <a href="http://maps.google.com/?q= <?php echo $person['contact_address'] ." " . $person['contact_city'] . " " .  $person['contact_state'] . " " . $person['contact_zipcode'] ?>" > <?php echo $person['contact_address'] ." " . $person['contact_city'] . " " .  $person['contact_state'] . " " . $person['contact_zipcode'] ?> </a></p>
+						<p><b>Address:</b> <a href="http://maps.google.com/?q= <?php echo $person['contact_address'] ." " . $person['contact_city'] . " " .  $person['contact_state'] . " " . $person['contact_zipcode'] ?>"  target="_blank" > <?php echo $person['contact_address'] ." " . $person['contact_city'] . " " .  $person['contact_state'] . " " . $person['contact_zipcode'] ?> </a></p>
 						<p><b>Bio:</b> <?php echo   $person['contact_notes'] ?> </p>
 					</div>
 					<div class="clear"></div>

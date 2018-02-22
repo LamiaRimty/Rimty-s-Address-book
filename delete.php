@@ -10,7 +10,7 @@
          $sql_delete_contact = $conn->query($delete_contact);
 
 
-if($sql_delete_contact){
+if($sql_delete_contact== true){
 	header("Location: index.php");
 	
 }

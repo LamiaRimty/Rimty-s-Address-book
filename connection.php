@@ -10,12 +10,9 @@
 $conn = new mysqli($host, $user, $pass, $db);
      
      //check if we are connected to the database
-	if (($conn-> error)) {
+	if ($conn-> error) {
 		die("could not connected to the database");
 	}
 
-else{
-	echo "you are connected";
-}
 
    ?>

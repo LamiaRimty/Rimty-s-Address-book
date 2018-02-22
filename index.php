@@ -49,12 +49,12 @@ require_once"connection.php";
 						<td><?php echo $row['contact_cphone'] ?></td> 
 
 
-						<td><i class="fa fa-pencil"></i> | <a href="delete.php?id= <?php echo $row['contact_id'] ?>"<i class="fa fa-trash-o"></i></a></td>
+						<td><a href="update_contact.php?id=<?php echo $row['contact_id'] ?>"> <i class="fa fa-pencil"></i  ></a> | <a href="delete.php?id= <?php echo $row['contact_id'] ?>"<i class="fa fa-trash-o"></i></a></td>
 					</tr>
-					<?php } ?>
+					<?php } ?>   
 				</tbody>
 			</table>
 		</div>
 	</div>	
 </body>
-</html>		
+</html>		 
