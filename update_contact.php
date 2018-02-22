@@ -1,3 +1,20 @@
+<?php 
+ require_once "connection.php";
+
+ if (isset($_GET['id'])) {
+ 	$id = $_GET['id'];
+
+ 	$get_contact = "select * from contacts where contact_id ='$id'  ";
+ 	$sql_get_contact =$conn->query($get_contact);
+ 	$row =mysqli_fetch_assoc($sql_get_contact);
+ 	//var_dump($row);
+ }
+
+?>
+
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,15 +40,15 @@
 							<input type="hidden" name="id" value="">
 							<tr>
 								<td>First Name:</td>
-								<td><input type="text" name="fname" value=""  size="40%"></td>
+								<td><input type="text" name="fname" value="<?php echo $row['contact_fname']?>"  size="40%"></td>
 							</tr>
 							<tr>
 								<td>Last Name:</td>
-								<td><input type="text" name="lname" value="" size="40%"></td>
+								<td><input type="text" name="lname" value="<?php echo $row['contact_lname']?>" size="40%"></td>
 							</tr>
 							<tr>
 								<td>Nickname:</td>
-								<td><input type="text" name="nickname" value="" size="40%"></td>
+								<td><input type="text" name="nickname" value="<?php echo $row['contact_nickname']?>" size="40%"></td>
 							</tr>
 							<tr>
 								<td>Profile Image:</td>
@@ -39,37 +56,37 @@
 							</tr>
 							<tr>
 								<td>Cell Phone:</td>
-								<td><input type="text" name="cphone" value="" size="40%"></td>
+								<td><input type="text" name="cphone" value="<?php echo $row['contact_cphone']?>" size="40%"></td>
 							</tr>
 							<tr>
 								<td>Home Phone:</td>
-								<td><input type="text" name="hphone" value="" size="40%"></td>
+								<td><input type="text" name="hphone" value="<?php echo $row['contact_hphone']?>" size="40%"></td>
 							</tr>
 							<tr>
 								<td>Work Phone:</td>
-								<td><input type="text" name="wphone" value="" size="40%"></td>
+								<td><input type="text" name="wphone" value="<?php echo $row['contact_wphone']?>" size="40%"></td>
 							</tr>
 							<tr>
 								<td>Address:</td>
-								<td><input type="text" name="address" value="" size="40%"></td>
+								<td><input type="text" name="address" value="<?php echo $row['contact_address']?>" size="40%"></td>
 							</tr>
 							<tr>
 								<td>City:</td>
-								<td><input type="text" name="city" value="" size="40%"></td>
+								<td><input type="text" name="city" value="<?php echo $row['contact_city']?>" size="40%"></td>
 							</tr>
 							<tr>
 								<td>State:</td>
-								<td><input type="text" name="state" value="" size="40%"></td>
+								<td><input type="text" name="state" value="<?php echo $row['contact_state']?>" size="40%"></td>
 							</tr>
 							<tr>
 								<td>Zipcode:</td>
-								<td><input type="text" name="zipcode" value="" size="40%"></td>
+								<td><input type="text" name="zipcode" value="<?php echo $row['contact_zipcode']?>" size="40%"></td>
 							</tr>
 						</table>
 						<table style="float:right" width="45%">
 							<tr>
 								<td>Bio:</td>
-								<td><textarea name="bio" id="bio" cols="30" rows="10"></textarea></td>
+								<td><textarea name="bio" id="bio" cols="30" rows="10"><?php echo $row['contact_notes']?></textarea></td>
 							</tr>
 						</table>
 						<div class="clear"></div>
