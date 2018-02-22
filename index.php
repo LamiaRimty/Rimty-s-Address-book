@@ -1,3 +1,13 @@
+<?php
+
+require_once"connection.php";
+$all_contacts = "select * form contacts";
+
+
+
+?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
