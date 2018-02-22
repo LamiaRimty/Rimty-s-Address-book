@@ -12,6 +12,49 @@
 
 ?>
 
+<?php
+if (isset($_POST['submit'])){
+		$id =$_POST['id'];
+		$fname = $_POST['fname'] ;
+		$lname = $_POST['lname'] ;
+		$nickname = $_POST['nickname'] ;
+		$profile = $_FILES['profile']['name'] ;
+		$profile_tmp = $_FILES['profile']['tmp_name'] ;
+		$cphone = $_POST['cphone'] ;
+        $hphone = $_POST['hphone'] ;
+        $wphone = $_POST['wphone'] ;
+        $address = $_POST['address'] ;
+        $city = $_POST['city'] ;
+        $state = $_POST['state'] ;
+        $zipcode = $_POST['zipcode'] ;
+      	$bio = $_POST['bio'] ;
+
+move_uploaded_file($profile_tmp, "img/$profile");
+
+$update_contact = "update contacts set
+			contact_fname = '$fname',
+			contact_lname = '$lname',
+			contact_nickname = '$nickname',
+			contact_cphone = '$cphone',
+			contact_hphone = '$hphone',
+			contact_wphone = '$wphone',
+			contact_address = '$address',
+			contact_city = '$city',
+			contact_state = '$state',
+			contact_zipcode = '$zipcode',
+			contact_profile= '$profile',
+			contact_notes = '$notes',
+			where contact_id = '$sid'";
+
+$sql_update_contact =  $conn->query($update_contact);
+
+if ($sql_update_contact) {
+header("Location :index.php");
+}
+
+}
+?>
+
 
 
 
@@ -35,9 +78,9 @@
 			<hr>
 			<div class="contact">
 				<div class="contact_insert">
-					<form>
+					<form action="update_contact.php" method="post" enctype="multipart/form-data">
 						<table style="float:left" width="50%">
-							<input type="hidden" name="id" value="">
+							<input type="hidden" name="id" value="<?php echo $row['contact_id']?>">
 							<tr>
 								<td>First Name:</td>
 								<td><input type="text" name="fname" value="<?php echo $row['contact_fname']?>"  size="40%"></td>

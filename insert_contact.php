@@ -18,7 +18,7 @@
 			<hr>
 			<div class="contact">
 				<div class="contact_insert">
-					<form action="insert_contact.php" method="post" enctype="multipart/form-data">
+					<form action="insert_contact.php?id=<?php echo $row[contact_id] ?>" method="post" enctype="multipart/form-data">
 						<table style="float:left" width="50%">
 							<tr>
 								<td>First Name:</td>
