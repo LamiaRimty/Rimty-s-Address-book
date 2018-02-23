@@ -39,17 +39,17 @@ require_once"connection.php";
 				</thead>
 				<tbody>
 					<?php while ( $row= mysqli_fetch_assoc($sql_all_contacts) ){
-						# code...
+						//var_dump($row);
 		
 					 ?>
 
                       <tr>
-						<td><a href="contact.php"><?php echo $row['contact_fname'] ." " . $row['contact_lname'] ?></a></td>
+						<td><a href="contact.php?id=<?php echo $row['contact_id'] ?>"><?php echo $row['contact_fname'] ." " . $row['contact_lname'] ?></a></td>
 						<td><?php echo $row['contact_nickname'] ?></td>
 						<td><?php echo $row['contact_cphone'] ?></td> 
 
 
-						<td><i class="fa fa-pencil"></i> | <i class="fa fa-trash-o"></i></td>
+						<td><i class="fa fa-pencil"></i> | <a href="delete.php?id= <?php echo $row['contact_id'] ?>"<i class="fa fa-trash-o"></i></a></td>
 					</tr>
 					<?php } ?>
 				</tbody>
