@@ -1,14 +1,14 @@
-<?php 
+ <?php 
  require_once "connection.php";
 
  if (isset($_GET['id'])) {
  	$id = $_GET['id'];
 
- 	$get_contact = "select * from contacts where contact_id ='$id'  ";
+ 	$get_contact = "select * from contacts where contact_id ='$id' ";
  	$sql_get_contact =$conn->query($get_contact);
  	$row =mysqli_fetch_assoc($sql_get_contact);
  	//var_dump($row);
- }
+ }   
 
 ?>
 
@@ -43,8 +43,8 @@ $update_contact = "update contacts set
 			contact_state = '$state',
 			contact_zipcode = '$zipcode',
 			contact_profile= '$profile',
-			contact_notes = '$notes',
-			where contact_id = '$sid'";
+			contact_notes = '$bio',
+			where contact_id = '$id'";
 
 $sql_update_contact =  $conn->query($update_contact);
 
@@ -56,7 +56,7 @@ header("Location :index.php");
 ?>
 
 
-
+  
 
 <!DOCTYPE html>
 <html>
@@ -119,7 +119,7 @@ header("Location :index.php");
 							</tr>
 							<tr>
 								<td>State:</td>
-								<td><input type="text" name="state" value="<?php echo $row['contact_state']?>" size="40%"></td>
+								<td><input type="text" name="state" value="<?php echo $row['contact_state']?>" size="40%"></td> 
 							</tr>
 							<tr>
 								<td>Zipcode:</td>
