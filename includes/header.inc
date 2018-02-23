@@ -1,3 +1,3 @@
 <div class="header">
-	<div class="headerContent"><h1>< { ( MYSQLI && PHP CONTACT LIST ) } ></h1></div>
+	<div class="headerContent"><h1><strong>Address Book</strong></h1></div>
 </div>

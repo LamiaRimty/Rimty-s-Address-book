@@ -24,7 +24,7 @@ require_once"connection.php";
 
 		<!-- content section -->
 		<div class="content">
-			<div class="floatl"><h1><?php echo $total_contacts?> contacts in phonebook</h1></div>
+			<div class="floatl"><h1><?php echo $total_contacts?> <em>contacts in addressbook</em></h1></div>
 			<a class="floatr" href="insert_contact.php"><input class="cancel_contact_button" type="button" value="New Contact"></a>		
 			<div class="clear"></div>
 			<hr class="pageTitle">
