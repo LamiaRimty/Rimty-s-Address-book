@@ -49,7 +49,7 @@ while ($row = mysqli_fetch_assoc($sql_contact)) {
 					  <?php  } else{  ?>
 
 
-					  <img src="img/default_profile_pic.jpg" alt="default image"  width="40%" style="float:left;">
+					  <img src="img/<?php echo $person['contact_profile']  ?>" alt="<?php echo $person['contact_fname']  ?>"  width="40%" style="float:left;">
 
 					  <?php  }   ?>
 
