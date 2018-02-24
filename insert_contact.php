@@ -1,3 +1,6 @@
+<?php 
+	require_once"connection.php";
+ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,7 +21,7 @@
 			<hr>
 			<div class="contact">
 				<div class="contact_insert">
-					<form action="insert_contact.php?id=<?php echo $row[contact_id] ?>" method="post" enctype="multipart/form-data">
+					<form action="insert_contact.php" method="post" enctype="multipart/form-data">
 						<table style="float:left" width="50%">
 							<tr>
 								<td>First Name:</td>
@@ -36,21 +39,18 @@
 								<td>Profile Image:</td>
 								<td><input type="file" name="profile"></td>
 							</tr>
-							
+							<tr>
 								<td>Cell Phone:</td>
 								<td><input type="text" name="cphone" placeholder="Cell Phone" size="40%"></td>
 							</tr>
-							
+							<tr>
+								<td>Email Address:</td>
+								<td><input type="text" name="email" placeholder="Email Address" size="40%"></td>
+							</tr>
 							<tr>
 								<td>Work Phone:</td>
 								<td><input type="text" name="wphone" placeholder="Work Phone" size="40%"></td>
 							</tr>
-
-							<tr>
-									<td>Email address:</td>
-								<td><input type="text" name="email" placeholder="Email address" size="40%"></td>
-							</tr>
-
 							<tr>
 								<td>Address:</td>
 								<td><input type="text" name="address" placeholder="Address" size="40%"></td>
@@ -61,7 +61,7 @@
 							</tr>
 							<tr>
 								<td>State:</td>
-								<td><input type="text" name="country" placeholder="Country" size="40%"></td>
+								<td><input type="text" name="state" placeholder="State" size="40%"></td>
 							</tr>
 							<tr>
 								<td>Zipcode:</td>
@@ -80,64 +80,28 @@
 			</div>
 		</div>	
 </body>
-</html>	
+</html>		
 <?php 
-	if (isset($_POST['submit'])){
-		require_once"connection.php";
-		$fname = $_POST['fname'] ;
-		$lname = $_POST['lname'] ;
-		$nickname = $_POST['nickname'] ;
-		$profile = $_FILES['profile']['name'] ;
-		$profile_tmp = $_FILES['profile']['tmp_name'] ;
-		$cphone = $_POST['email'] ;
-		$cphone = $_POST['cphone'] ;
-     	$wphone = $_POST['wphone'] ;
-        $address = $_POST['address'] ;
-        $city = $_POST['city'] ;
-        $state = $_POST['state'] ;
-        $zipcode = $_POST['zipcode'] ;
-      	//$bio = $_POST['bio'] ;
-
-        move_uploaded_file($profile_tmp, "img/$profile");
-
-
-
-        $insert_contact ="insert into contacts (contact_fname,
-        	contact_lname,
-        	contact_nickname,
-        	contact_cphone,
-      		contact_wphone,
-      		contact_email,
-        	contact_address,
-        	contact_city,
-        	contact_state,
-        	contact_zipcode,
-        	contact_profile,
-        	 )
-        	
-        	values(
-        		'$fname',
-        		'$lname',
-        		'$nickname',
-        		'$cphone',
-        		'$wphone',
-        		'$email',
-        		'$address',
-        		'$city',
-        		'$state',
-        		'$zipcode',
-				'$profile',
-        		)";
-
-       $sql_insert_contact = $conn ->query($insert_contact);
-       		if($sql_insert_contact== true)
-       		{
-       			header("Location: index.php");
-       		}
-
-}
+	if (isset($_POST['submit'])) {
+		
+		$fname = $_POST['fname'];
+		$lname = $_POST['lname'];
+		$nickname = $_POST['nickname'];
+		$profile = $_FILES['profile']['name'];
+		$profile_tmp = $_FILES['profile']['tmp_name'];
+		$cphone = $_POST['cphone'];
+		$email = $_POST['email'];
+		$wphone = $_POST['wphone'];
+		$address = $_POST['address'];
+		$city = $_POST['city'];
+		$state = $_POST['state'];
+		$zipcode = $_POST['zipcode'];
 	
-
-?>
-
-    
+		move_uploaded_file($profile_tmp, "profile_images/$profile");
+		$insert_contact = "insert into contacts (contact_fname, contact_lname, contact_nickname,contact_cphone, contact_email, contact_wphone, contact_address, contact_city, contact_state, contact_zipcode, contact_profile, contact_notes) values ('$fname', '$lname', '$nickname', '$cphone', '$email', '$wphone', '$address', '$city', '$state', '$zipcode', '$profile' )";
+		$sql_insert_contact = $conn->query($insert_contact);
+		if ($sql_insert_contact == true) {
+			header("Location: index.php");
+		}
+	}
+ ?>
