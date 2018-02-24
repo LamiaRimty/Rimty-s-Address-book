@@ -1,3 +1,3 @@
 # Rimty-s-Address-book
 
-$db = "tutorial_phonebook";
+My database name is "tutorial_phonebook";
