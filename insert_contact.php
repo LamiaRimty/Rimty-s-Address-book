@@ -36,18 +36,21 @@
 								<td>Profile Image:</td>
 								<td><input type="file" name="profile"></td>
 							</tr>
-							<tr>
+							
 								<td>Cell Phone:</td>
 								<td><input type="text" name="cphone" placeholder="Cell Phone" size="40%"></td>
 							</tr>
-							<tr>
-								<td>Home Phone:</td>
-								<td><input type="text" name="hphone" placeholder="Home Phone" size="40%"></td>
-							</tr>
+							
 							<tr>
 								<td>Work Phone:</td>
 								<td><input type="text" name="wphone" placeholder="Work Phone" size="40%"></td>
 							</tr>
+
+							<tr>
+									<td>Email address:</td>
+								<td><input type="text" name="email" placeholder="Email address" size="40%"></td>
+							</tr>
+
 							<tr>
 								<td>Address:</td>
 								<td><input type="text" name="address" placeholder="Address" size="40%"></td>
@@ -66,10 +69,7 @@
 							</tr>
 						</table>
 						<table style="float:right" width="45%">
-							<tr>
-								<td>Bio:</td>
-								<td><textarea name="bio" id="bio" cols="30" rows="10"></textarea></td>
-							</tr>
+							
 						</table>
 						<div class="clear"></div>
 						<input class="insert_contact_button" type="submit" name="submit" value="Insert Contact">
@@ -89,14 +89,14 @@
 		$nickname = $_POST['nickname'] ;
 		$profile = $_FILES['profile']['name'] ;
 		$profile_tmp = $_FILES['profile']['tmp_name'] ;
+		$cphone = $_POST['email'] ;
 		$cphone = $_POST['cphone'] ;
-        $hphone = $_POST['hphone'] ;
-        $wphone = $_POST['wphone'] ;
+     	$wphone = $_POST['wphone'] ;
         $address = $_POST['address'] ;
         $city = $_POST['city'] ;
         $state = $_POST['state'] ;
         $zipcode = $_POST['zipcode'] ;
-      	$bio = $_POST['bio'] ;
+      	//$bio = $_POST['bio'] ;
 
         move_uploaded_file($profile_tmp, "img/$profile");
 
@@ -106,28 +106,28 @@
         	contact_lname,
         	contact_nickname,
         	contact_cphone,
-        	contact_hphone,
-        	contact_wphone,
+      		contact_wphone,
+      		contact_email,
         	contact_address,
         	contact_city,
         	contact_state,
         	contact_zipcode,
         	contact_profile,
-        	contact_notes )
+        	 )
         	
         	values(
         		'$fname',
         		'$lname',
         		'$nickname',
         		'$cphone',
-        		'$hphone',
         		'$wphone',
+        		'$email',
         		'$address',
         		'$city',
         		'$state',
         		'$zipcode',
 				'$profile',
-        		'$bio')";
+        		)";
 
        $sql_insert_contact = $conn ->query($insert_contact);
        		if($sql_insert_contact== true)

@@ -20,16 +20,17 @@
 		}else{
 			$profile = $row['contact_profile'];
 		}
+
+		$email = $_POST['email'];
 		$cphone = $_POST['cphone'];
-		$hphone = $_POST['hphone'];
-		$wphone = $_POST['wphone'];
+	    $wphone = $_POST['wphone'];
 		$address = $_POST['address'];
 		$city = $_POST['city'];
 		$state = $_POST['state'];
 		$zipcode = $_POST['zipcode'];
-		$bio = $_POST['bio'];
+		//$bio = $_POST['bio'];
 		move_uploaded_file($profile_tmp, "profile_images/$profile");
-		$update_contact = "update contacts set contact_fname='$fname', contact_lname='$lname', contact_nickname='$nickname', contact_cphone='$cphone', contact_hphone='$hphone', contact_wphone='$wphone', contact_address='$address', contact_city='$city', contact_state='$state', contact_zipcode='$zipcode', contact_profile='$profile', contact_notes='$notes' where contact_id = '$id'";
+		$update_contact = "update contacts set contact_fname='$fname', contact_lname='$lname', contact_nickname='$nickname',   contact_wphone='$wphone',contact_email='$email', contact_address='$address', contact_city='$city', contact_state='$state', contact_zipcode='$zipcode', contact_profile='$profile', contact_notes='$notes' where contact_id = '$id'";
 		$sql_update_contact = $conn->query($update_contact);
 		if ($sql_update_contact == true) {
 			header("Location: index.php");
@@ -79,13 +80,14 @@
 								<td>Cell Phone:</td>
 								<td><input type="text" name="cphone" value="<?php echo $row['contact_cphone'] ?>" size="40%"></td>
 							</tr>
-							<tr>
-								<td>Home Phone:</td>
-								<td><input type="text" name="hphone" value="<?php echo $row['contact_hphone'] ?>" size="40%"></td>
-							</tr>
+							
 							<tr>
 								<td>Work Phone:</td>
 								<td><input type="text" name="wphone" value="<?php echo $row['contact_wphone'] ?>" size="40%"></td>
+							</tr>
+							<tr>
+								<td>Email address:</td>
+								<td><input type="text" name="email" value="<?php echo $row['contact_email'] ?>" size="40%"></td>
 							</tr>
 							<tr>
 								<td>Address:</td>
@@ -105,10 +107,8 @@
 							</tr>
 						</table>
 						<table style="float:right" width="45%">
-							<tr>
-								<td>Bio:</td>
-								<td><textarea name="bio" id="bio" cols="30" rows="10"><?php echo $row['contact_notes'] ?></textarea></td>
-							</tr>
+							
+							
 						</table>
 						<div class="clear"></div>
 						<input class="insert_contact_button" type="submit" name="submit" value="Update Contact">

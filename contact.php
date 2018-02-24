@@ -57,10 +57,10 @@ while ($row = mysqli_fetch_assoc($sql_contact)) {
 					<div class="contact_info">
 						<p><b>Nickname:</b><?php echo $person['contact_nickname'] ?> </p>
 						<p><b>Cell Phone:</b> <?php echo $person['contact_cphone'] ?> </p>
-						<p><b>Home Phone:</b> <?php echo $person['contact_hphone'] ?> </p>
-						<p><b>Work Phone:</b><?php echo $person['contact_wphone'] ?> </p>
+				        <p><b>Work Phone:</b><?php echo $person['contact_wphone'] ?> </p>
+				        <p><b>Email Address:</b> <?php echo $person['contact_email'] ?> </p>
 						<p><b>Address:</b> <a href="http://maps.google.com/?q= <?php echo $person['contact_address'] ." " . $person['contact_city'] . " " .  $person['contact_state'] . " " . $person['contact_zipcode'] ?>"  target="_blank" > <?php echo $person['contact_address'] ." " . $person['contact_city'] . " " .  $person['contact_state'] . " " . $person['contact_zipcode'] ?> </a></p>
-						<p><b>Bio:</b> <?php echo   $person['contact_notes'] ?> </p>
+						
 					</div>
 					<div class="clear"></div>
 				</div>

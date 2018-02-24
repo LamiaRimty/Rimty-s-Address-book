@@ -2,6 +2,8 @@ body{font-family:"Times New Roman", Times, serif;
 padding:0; 
 margin:0;
  background-color:powderblue;
+background: linear-gradient(powderblue,gray);
+
  opacity: 0.9;
 }
 
@@ -9,26 +11,85 @@ margin:0;
 .floatr{float:right;}
 .clear{clear:both;}
 
-.header{width:100%; border-bottom:4px solid green; height: 225px; background-color: lightcoral ; }
+.header{width:100%; border-bottom:4px solid black; height: 225px;   background: linear-gradient(green,lightcoral,blue); }
 .header .headerContent{width:80%; margin:0 auto; line-height:100px;}
 .header .headerContent h1{margin:0; text-align: center; color:#ffffff; font-size: 50px; font-weight: bold;}
 
 .wrapper{width:100%;}
 
-.content{width:80%;
+.content{width:90%;
 margin:-130px auto 0 auto;
 background-color:#ffffff;
-border-top:4px solid green;
+border-top:4px solid black;
 padding:40px 20px;
 border-radius: 15px;
 }
 
-.contact{width:100%;}
+.contact{width:100%;
+
+}
 .contact_info{width:57%; float:right; margin-left:3%;}
 
 
 
-.pageTitle{margin-bottom:50px;}
+.pageTitle{margin-bottom:50px;
+}
 
-.insert_contact_button{width: 100px; height: 50px; background-color:grey; color:#ffffff; border:none; margin-top:50px; border-radius: 5px;}
-.cancel_contact_button{width: 100px; height: 50px; background-color:#2bb424; color:#ffffff; border:none; margin-top:50px;border-radius: 5px;}
+.pageTitle>tr{
+	width: 100px;
+ height: 50px;
+ background-color:grey;
+ color:#ffffff; 
+border:none; margin-top:50px;
+border-radius: 5px;
+box-sizing: border-box;
+box-shadow: 0px 10px 15px  -2px #333;
+}
+
+.insert_contact_button{
+width: 100px;
+ height: 50px;
+ background-color:grey;
+ color:#ffffff; 
+border:none; margin-top:50px;
+border-radius: 5px;
+box-sizing: border-box;
+box-shadow: 0px 10px 15px  -2px #333;
+ background: #fc3;
+    background: linear-gradient(green,#f91);
+    border: 1px solid #ddd;
+    color: white;
+    text-decoration: none;
+text-shadow: 0 1px 2px rgba(0, 0,0,0.6);
+
+}
+
+
+.cancel_contact_button{
+	width: 100px; 
+	height: 50px; 
+	background-color:#2bb424;
+     color:#ffffff; 
+	border:none; 
+	margin-top:50px;
+	border-radius: 5px;
+	box-sizing: border-box;
+    box-shadow: 0px 10px 15px  -2px #333;
+
+    background: linear-gradient(red,#f91);
+    border: 1px solid #ddd;
+    color: white;
+}
+
+
+
+.insert_contact_button:hover{
+    border-color: #888;
+    text-shadow: 0 1px  2px rgba(0, 0,0,0.9);
+    background: blue;
+    }
+.cancel_contact_button:hover{
+    border-color: #888;
+    text-shadow: 0 1px  2px rgba(0, 0,0,0.9);
+    background: blue;
+    }

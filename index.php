@@ -33,6 +33,7 @@ require_once"connection.php";
 					<tr align="left">
 						<th>Name:</th>
 						<th>Nickname:</th>
+						<th>Email:</th>
 						<th>Cell Phone:</th>
 						<th>Actions</th>
 					</tr>   
@@ -46,6 +47,7 @@ require_once"connection.php";
                       <tr>
 						<td><a href="contact.php?id=<?php echo $row['contact_id'] ?>"><?php echo $row['contact_fname'] ." " . $row['contact_lname'] ?></a></td>
 						<td><?php echo $row['contact_nickname'] ?></td>
+						<td><?php echo $row['contact_email'] ?></td> 
 						<td><?php echo $row['contact_cphone'] ?></td> 
 
 
