@@ -21,16 +21,17 @@
 			$profile = $row['contact_profile'];
 		}
 
-		$email = $_POST['email'];
+		
 		$cphone = $_POST['cphone'];
 	    $wphone = $_POST['wphone'];
+	    $email = $_POST['email'];
 		$address = $_POST['address'];
 		$city = $_POST['city'];
 		$state = $_POST['state'];
 		$zipcode = $_POST['zipcode'];
-		//$bio = $_POST['bio'];
-		move_uploaded_file($profile_tmp, "profile_images/$profile");
-		$update_contact = "update contacts set contact_fname='$fname', contact_lname='$lname', contact_nickname='$nickname',   contact_wphone='$wphone',contact_email='$email', contact_address='$address', contact_city='$city', contact_state='$state', contact_zipcode='$zipcode', contact_profile='$profile', contact_notes='$notes' where contact_id = '$id'";
+		
+		move_uploaded_file($profile_tmp, "img/$profile");
+		$update_contact = "update contacts set contact_fname='$fname', contact_lname='$lname', contact_nickname='$nickname', contact_cphone='$cphone',   contact_wphone='$wphone',contact_email='$email', contact_address='$address', contact_city='$city', contact_state='$state', contact_zipcode='$zipcode', contact_profile='$profile' where contact_id = '$id'";
 		$sql_update_contact = $conn->query($update_contact);
 		if ($sql_update_contact == true) {
 			header("Location: index.php");

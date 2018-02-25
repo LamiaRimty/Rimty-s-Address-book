@@ -86,10 +86,10 @@ text-shadow: 0 1px 2px rgba(0, 0,0,0.6);
 .insert_contact_button:hover{
     border-color: #888;
     text-shadow: 0 1px  2px rgba(0, 0,0,0.9);
-    background: blue;
+    background: #2a415e;
     }
 .cancel_contact_button:hover{
     border-color: #888;
     text-shadow: 0 1px  2px rgba(0, 0,0,0.9);
-    background: blue;
+    background: #2a415e;
     }

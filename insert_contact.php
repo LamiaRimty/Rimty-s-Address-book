@@ -43,14 +43,17 @@
 								<td>Cell Phone:</td>
 								<td><input type="text" name="cphone" placeholder="Cell Phone" size="40%"></td>
 							</tr>
+							
+								<td>Work Phone:</td>
+								<td><input type="text" name="wphone" placeholder="Work Phone" size="40%"></td>
+							</tr>
+
 							<tr>
 								<td>Email Address:</td>
 								<td><input type="text" name="email" placeholder="Email Address" size="40%"></td>
 							</tr>
 							<tr>
-								<td>Work Phone:</td>
-								<td><input type="text" name="wphone" placeholder="Work Phone" size="40%"></td>
-							</tr>
+
 							<tr>
 								<td>Address:</td>
 								<td><input type="text" name="address" placeholder="Address" size="40%"></td>
@@ -90,15 +93,16 @@
 		$profile = $_FILES['profile']['name'];
 		$profile_tmp = $_FILES['profile']['tmp_name'];
 		$cphone = $_POST['cphone'];
-		$email = $_POST['email'];
+		
 		$wphone = $_POST['wphone'];
+		$email = $_POST['email'];
 		$address = $_POST['address'];
 		$city = $_POST['city'];
 		$state = $_POST['state'];
 		$zipcode = $_POST['zipcode'];
 	
-		move_uploaded_file($profile_tmp, "profile_images/$profile");
-		$insert_contact = "insert into contacts (contact_fname, contact_lname, contact_nickname,contact_cphone, contact_email, contact_wphone, contact_address, contact_city, contact_state, contact_zipcode, contact_profile, contact_notes) values ('$fname', '$lname', '$nickname', '$cphone', '$email', '$wphone', '$address', '$city', '$state', '$zipcode', '$profile' )";
+		move_uploaded_file( $profile_tmp, "img/$profile");
+		$insert_contact = "insert into contacts (contact_fname, contact_lname, contact_nickname,contact_cphone, contact_wphone, contact_email, contact_address, contact_city, contact_state, contact_zipcode, contact_profile ) values ('$fname', '$lname', '$nickname', '$cphone', '$email', '$wphone', '$address', '$city', '$state', '$zipcode', '$profile' )";
 		$sql_insert_contact = $conn->query($insert_contact);
 		if ($sql_insert_contact == true) {
 			header("Location: index.php");
