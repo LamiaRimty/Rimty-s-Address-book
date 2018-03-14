@@ -67,7 +67,7 @@
              $addRow = $conn->query($query);
             
 			if ($addRow == true) { 
-				header('location: login.php');
+				header('location: index.php');
 			}
 		}
 		
