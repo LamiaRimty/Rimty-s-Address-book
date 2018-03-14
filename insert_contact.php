@@ -1,11 +1,14 @@
 <?php 
 	require_once"connection.php";
+	if(!isset($_SESSION['id']))
+	{
+		header("Location: index.php");
+	}
  ?>
 <!DOCTYPE html>
 <html>
 <head>
 	<?php include"includes/head.inc"; ?>
-	<script>tinymce.init({selector:'textarea'});</script>
 </head>
 <body>
 	<div class="wrapper">
@@ -17,76 +20,76 @@
 
 		<!-- content section -->
 		<div class="content">
-		<div><h1>Create New Contact</h1></div>
-			<hr>
-			<div class="contact">
-				<div class="contact_insert">
-					<form action="insert_contact.php" method="post" enctype="multipart/form-data">
-						<table style="float:left" width="50%">
-							<tr>
-								<td>First Name:</td>
-								<td><input type="text" name="fname" placeholder="First Name"  size="40%"></td>
-							</tr>
-							<tr>
-								<td>Last Name:</td>
-								<td><input type="text" name="lname" placeholder="Last Name" size="40%"></td>
-							</tr>
-							<tr>
-								<td>Nickname:</td>
-								<td><input type="text" name="nickname" placeholder="Nickname" size="40%"></td>
-							</tr>
-							<tr>
-								<td>Profile Image:</td>
-								<td><input type="file" name="profile"></td>
-							</tr>
-							<tr>
-								<td>Cell Phone:</td>
-								<td><input type="text" name="cphone" placeholder="Cell Phone" size="40%"></td>
-							</tr>
-							
-								<td>Work Phone:</td>
-								<td><input type="text" name="wphone" placeholder="Work Phone" size="40%"></td>
-							</tr>
+			<div><h1>Create New Contact</h1></div>
+				<hr>
+				<div class="contact">
+					<div class="contact_insert">
+						<form action="insert_contact.php" method="post" enctype="multipart/form-data">
+							<table style="float:left" width="50%">
+								<tr>
+									<td>First Name:</td>
+									<td><input type="text" name="fname" placeholder="First Name"  size="40%" required></td>
+								</tr>
+								<tr>
+									<td>Last Name:</td>
+									<td><input type="text" name="lname" placeholder="Last Name" size="40%" required></td>
+								</tr>
+								<tr>
+									<td>Nickname:</td>
+									<td><input type="text" name="nickname" placeholder="Nickname" size="40%" required></td>
+								</tr>
+								<tr>
+									<td>Profile Image:</td>
+									<td><input type="file" name="profile"></td>
+								</tr>
+								<tr>
+									<td>Cell Phone:</td>
+									<td><input type="text" name="cphone" placeholder="Cell Phone" size="40%" required></td>
+								</tr>
+								
+									<td>Work Phone:</td>
+									<td><input type="text" name="wphone" placeholder="Work Phone" size="40%"></td>
+								</tr>
 
-							<tr>
-								<td>Email Address:</td>
-								<td><input type="text" name="email" placeholder="Email Address" size="40%"></td>
-							</tr>
-							<tr>
+								<tr>
+									<td>Email Address:</td>
+									<td><input type="email" name="email" placeholder="Email Address" size="40%" required></td>
+								</tr>
+								<tr>
 
-							<tr>
-								<td>Address:</td>
-								<td><input type="text" name="address" placeholder="Address" size="40%"></td>
-							</tr>
-							<tr>
-								<td>City:</td>
-								<td><input type="text" name="city" placeholder="City" size="40%"></td>
-							</tr>
-							<tr>
-								<td>State:</td>
-								<td><input type="text" name="state" placeholder="State" size="40%"></td>
-							</tr>
-							<tr>
-								<td>Zipcode:</td>
-								<td><input type="text" name="zipcode" placeholder="Zipcode" size="40%"></td>
-							</tr>
-						</table>
-						<table style="float:right" width="45%">
-							
-						</table>
-						<div class="clear"></div>
-						<input class="insert_contact_button" type="submit" name="submit" value="Insert Contact">
-						<a href="index.php"><input class="cancel_contact_button" type="button" value="Cancel"></a>
-					</form>
-				</div>
-				<div class="clear"></div>
+								<tr>
+									<td>Address:</td>
+									<td><input type="text" name="address" placeholder="Address" size="40%" required></td>
+								</tr>
+								<tr>
+									<td>City:</td>
+									<td><input type="text" name="city" placeholder="City" size="40%" required></td>
+								</tr>
+								<tr>
+									<td>State:</td>
+									<td><input type="text" name="state" placeholder="State" size="40%" required></td>
+								</tr>
+								<tr>
+									<td>Zipcode:</td>
+									<td><input type="text" name="zipcode" placeholder="Zipcode" size="40%" required></td>
+								</tr>
+							</table>
+							<table style="float:right" width="45%">
+								
+							</table>
+							<div class="clear"></div>
+							<input class="insert_contact_button" type="submit" name="submit" value="Insert Contact">
+							<a href="view.php"><input class="cancel_contact_button" type="button" value="Cancel"></a>
+						</form>
+					</div>
+					<div class="clear"></div>
 			</div>
 		</div>	
 </body>
 </html>		
 <?php 
 	if (isset($_POST['submit'])) {
-		
+		$user_id = $_SESSION['id'];
 		$fname = $_POST['fname'];
 		$lname = $_POST['lname'];
 		$nickname = $_POST['nickname'];
@@ -102,10 +105,10 @@
 		$zipcode = $_POST['zipcode'];
 	
 		move_uploaded_file( $profile_tmp, "img/$profile");
-		$insert_contact = "insert into contacts (contact_fname, contact_lname, contact_nickname,contact_cphone, contact_wphone, contact_email, contact_address, contact_city, contact_state, contact_zipcode, contact_profile ) values ('$fname', '$lname', '$nickname', '$cphone', '$email', '$wphone', '$address', '$city', '$state', '$zipcode', '$profile' )";
+		$insert_contact = "insert into contacts (user_id ,contact_fname, contact_lname, contact_nickname,contact_cphone, contact_wphone, contact_email, contact_address, contact_city, contact_state, contact_zipcode, contact_profile ,contact_notes ,contact_status ) values ('$user_id', '$fname', '$lname', '$nickname', '$cphone', '$email', '$wphone', '$address', '$city', '$state', '$zipcode', '$profile' ,'' ,'1')";
 		$sql_insert_contact = $conn->query($insert_contact);
 		if ($sql_insert_contact == true) {
-			header("Location: index.php");
+			header("Location: view.php");
 		}
 	}
  ?>

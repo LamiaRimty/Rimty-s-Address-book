@@ -1,62 +1,67 @@
-<?php
-
-require_once"connection.php";
- $all_contacts = "select * from contacts";
- 
- $sql_all_contacts = $conn-> query($all_contacts);
- 
- $total_contacts =$sql_all_contacts->num_rows;
-
-
-?>
-
-
+<?php 
+    require_once"connection.php";
+    unset($_SESSION['id'])
+ ?>
 <!DOCTYPE html>
 <html>
 <head>
-	<?php include"includes/head.inc"; ?>
+    <?php include"includes/head.inc"; ?>
 </head>
 <body>
-	<div class="wrapper">
+<div class="wrapper">
 
-		<!-- header section -->
-		<?php include"includes/header.inc"; ?>
+    <!-- header section -->
+    <div class="header">
+        <div class="headerContent"><h1>Address Book</h1></div>
+    </div>
+    <div class="content">
+			<div><h1>Log in into your account</h1></div>
+				<hr>
+				<div class="contact">
+					<div class="contact_insert">
+    
+                        <form method = "post" action="index.php" enctype="multipart/form-data">
+                            <table style="float:left" width="50%">
+                                <tr>
+									<td>Name:</td>
+									<td><input type="text" name="name" placeholder="Name"  size="40%" required></td>
+								</tr>
+								<tr>
+									<td>Password:</td>
+									<td><input type="password" name="password" placeholder="Password" size="40%" required></td>
+								</tr>
+                            </table>
 
-		<!-- content section -->
-		<div class="content">
-			<div class="floatl"><h1><?php echo $total_contacts?> <em>contacts in addressbook</em></h1></div>
-			<a class="floatr" href="insert_contact.php"><input class="cancel_contact_button" type="button" value="New Contact"></a>		
-			<div class="clear"></div>
-			<hr class="pageTitle">
-			<table id="contactsTable" class="display">
-				<thead>
-					<tr align="left">
-						<th>Name:</th>
-						<th>Nickname:</th>
-						<th>Email:</th>
-						<th>Cell Phone:</th>
-						<th>Actions</th>
-					</tr>   
-				</thead>
-				<tbody>
-					<?php while ( $row= mysqli_fetch_assoc($sql_all_contacts) ){
-						//var_dump($row);
-		
-					 ?>
+                            <table style="float:right" width="45%">
+                            </table>
+                            <div class="clear"></div>
 
-                      <tr>
-						<td><a href="contact.php?id=<?php echo $row['contact_id'] ?>"><?php echo $row['contact_fname'] ." " . $row['contact_lname'] ?></a></td>
-						<td><?php echo $row['contact_nickname'] ?></td>
-						<td><?php echo $row['contact_email'] ?></td> 
-						<td><?php echo $row['contact_cphone'] ?></td> 
+                            <input class="insert_contact_button" type="submit" name="submit" value="Sign In">
+                            <p>Not yet a member? <a class="a_btn" href="register.php"><strong>Sign Up</strong></a></p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+    </div>
 
-
-						<td><a href="update_contact.php?id=<?php echo $row['contact_id'] ?>"> <i class="fa fa-pencil"></i  ></a> | <a href="delete.php?id= <?php echo $row['contact_id'] ?>"<i class="fa fa-trash-o"></i></a></td>
-					</tr>
-					<?php } ?>   
-				</tbody>
-			</table>
-		</div>
-	</div>	
 </body>
-</html>		 
+</html>
+
+<?php 
+	if (isset($_POST['submit'])) {
+		$user_name = $_POST['name'];;
+		$password = $_POST['password'];
+        
+        if (!empty($user_name) && !empty(password)) {
+
+             $query = "SELECT * FROM users WHERE user_name='$user_name' AND password='$password'";
+             $findRow = $conn->query($query);
+
+            if (mysqli_num_rows($findRow) == 1) { 
+                $_SESSION['id'] = $findRow->fetch_assoc()['user_id'];
+				header('location: view.php');
+			}
+		}
+		
+	}
+ ?>

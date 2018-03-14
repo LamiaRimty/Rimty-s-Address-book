@@ -4,7 +4,8 @@
    $user = "root";
    $pass ="";
    $db = "tutorial_phonebook";
-
+   $errors = array();
+   session_start();
    //create a connection to the database
 
 $conn = new mysqli($host, $user, $pass, $db);

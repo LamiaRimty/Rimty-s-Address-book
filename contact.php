@@ -1,7 +1,12 @@
 <?php
+require_once"connection.php";
+if(!isset($_SESSION['id']))
+{
+	header("Location: index.php");
+}
  if(isset($_GET['id']))
  {
- 	require_once"connection.php";
+ 	
  	$contacts = array( );
 
  	$id = $_GET['id'];
