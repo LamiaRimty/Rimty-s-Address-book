@@ -19,10 +19,18 @@ require_once"connection.php";
     );
 
     header('Content-type: application/csv');
-    header('Content-Disposition: attachment; filename='.$filename);
+    header('Content-Disposition: attachment;
+     filename='.$filename);
     fputcsv($fp, $header);
 
-    $csv_query = "SELECT contact_fname, contact_lname, contact_nickname, contact_cphone, contact_wphone, contact_email, contact_address, contact_city FROM contacts where user_id = '$_SESSION[id]'";
+    $csv_query = "SELECT contact_fname,
+     contact_lname,
+     contact_nickname,
+     contact_cphone,
+     contact_wphone,
+     contact_email,
+     contact_address,
+     contact_city FROM contacts where user_id = '$_SESSION[id]'";
     $csv_result = mysqli_query($conn, $csv_query);
 
     while($row = mysqli_fetch_row($csv_result)) {

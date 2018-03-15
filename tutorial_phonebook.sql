@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 24, 2018 at 08:09 PM
+-- Generation Time: Mar 15, 2018 at 07:22 AM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.2
 
@@ -51,10 +51,15 @@ CREATE TABLE `contacts` (
 --
 
 INSERT INTO `contacts` (`contact_id`, `user_id`, `contact_fname`, `contact_lname`, `contact_nickname`, `contact_cphone`, `contact_wphone`, `contact_email`, `contact_address`, `contact_city`, `contact_state`, `contact_zipcode`, `contact_profile`, `contact_notes`, `contact_status`) VALUES
-('28','1', ' Lutfun', 'Nahar', 'Labonno', '01712506802', '0289789', 'lutfun.hossain@gmail.com', 'W Agargaon', 'Dhaka', 'Bangladesh', '1218', 'Labonno.jpg', '', '1'),
-('29','2', 'Hossain Bin', 'Amin ', 'Tuhin', '01712213853', '02955467', 'hossain.cse@gmail.com', 'Haragach', 'Rangpur', 'Bangladesh', '5402', 'Tuhin.jpg', '', '1'),
-('30','3', 'Masnoon', 'Nazifa', 'Taseen', '01784097197', '65425', 'Taseen@gmail.com', 'Haragach Road Shalbon Mistripara', 'Rangpur', 'Bangladesh', '5402', 'Taseen.jpg', '', '1'),
-('31','4','Kobita', 'Afruz', 'Kabita', '01739448252', '02979879', 'kabita@gmail.com', 'F/67,uttar cayabithi,joydebpur', 'Gazipur', 'Bangladesh', '1700', 'Kobita.JPG', '', '1');
+(37, 37, 'Lamia', 'Jabin', 'Rimty', '01761075136', 'rimtycse@gmail.com', '01521479173', 'Habibnagar', 'Rangpur', 'Bangladesh', '5402', 'Rimty.jpg', '', '1'),
+(38, 38, 'Lutfun', 'Nahar', 'Labonno', '01712506802', 'lutfun.hossain@gmail.com', '029554904', 'West Agargaon', 'Dhaka', 'Bangladesh', '1216', 'Labonno.jpg', '', '1'),
+(39, 41, 'Lamia', 'Jabin', 'Rimty', '01761075136', 'rimtycse@gmail.com', '01521479173', 'Habibnagar', 'Rangpur', 'Bangladesh', '5402', 'Rimty.jpg', '', '1'),
+(40, 41, 'Nurullayla', 'Begum', 'Kalpana', '01716407697', 'kalpana@gmail.com', '65895', 'Habibnagar', 'Rangpur', 'Bangladesh', '5402', 'kolpona.jpg', '', '1'),
+(41, 41, 'Kabita', 'Afruz', 'Kabita', '01739448252', 'kabita@gmail.com', '01739448252', 'Joydebpur', 'Gazipur', 'Bangladesh', '1700', 'Kobita.JPG', '', '1'),
+(42, 38, 'Masnoon', 'Nazifa', 'Taseen', '01716407666', 'Taseen@gmail.com', '654256', 'SalbonMiistri para', 'Rangpur', 'Bangladesh', '5402', 'Taseen.jpg', '', '1'),
+(43, 38, 'Hossain Bin', 'Amin', 'Tuhin', '01712213853', 'hossain.cse@gmail.com', '0276578', 'Haragach', 'Rangpur', 'Bangladesh', '5402', 'Tuhin.jpg', '', '1');
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `users`
@@ -68,44 +73,45 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `contacts`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`user_id`, `user_name`, `email`, `password`) VALUES
-('1','monmoy','iammonmoy@gmail.com','512345monmoy'),
-('2','tonmoy','tonmoy_sust@yahoo.com','512345monmoy'),
-('3','mahida','www.somikkha@gmail.com','512345monmoy'),
-('4','rimty','rimty@gmail.com','512345monmoy');
+(38, 'labonno', 'lutfun.hossain@gmail.com', 'labonno111'),
+(41, 'rimty', 'rimtycse@gmail.com', 'rimty111');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `contacts` and users
+-- Indexes for table `contacts`
 --
 ALTER TABLE `contacts`
   ADD PRIMARY KEY (`contact_id`);
 
+--
+-- Indexes for table `users`
+--
 ALTER TABLE `users`
   ADD PRIMARY KEY (`user_id`);
-
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT for table `contacts` and users
+-- AUTO_INCREMENT for table `contacts`
 --
 ALTER TABLE `contacts`
-  MODIFY `contact_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
-COMMIT;
+  MODIFY `contact_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
+--
+-- AUTO_INCREMENT for table `users`
+--
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 COMMIT;
-
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
